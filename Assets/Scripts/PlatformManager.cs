@@ -32,9 +32,13 @@ public class PlatformManager : MonoBehaviour
     {
         for(int i =0; i<numOfPlatforms-1;i++)
         {
-            Instantiate(platformPrefab, new Vector3(0,0,platformLength*i), Quaternion.identity);
+            lastPlatform=Instantiate(platformPrefab, new Vector3(0,0,platformLength*i), Quaternion.identity);
+            lastPlatform.GetComponent<CheckPoint>().createPowerUps();
+            lastPlatform.GetComponent<CheckPoint>().allyController=allyController;
         }
         lastPlatform=Instantiate(platformPrefab, new Vector3(0,0,platformLength*(numOfPlatforms-1)), Quaternion.identity);
+        lastPlatform.GetComponent<CheckPoint>().createPowerUps();
+        lastPlatform.GetComponent<CheckPoint>().allyController=allyController;
 
         navMeshSurface.BuildNavMesh(); // Rebuild the NavMesh
 
@@ -45,6 +49,9 @@ public class PlatformManager : MonoBehaviour
         Vector3 spawnPosition = lastPlatform.transform.position + new Vector3(0,0,platformLength);
         lastPlatform = Instantiate(platformPrefab, spawnPosition, Quaternion.identity);
         navMeshSurface.BuildNavMesh(); // Rebuild the NavMesh
+        lastPlatform.GetComponent<CheckPoint>().createPowerUps();
+        lastPlatform.GetComponent<CheckPoint>().allyController=allyController;
     }
+
 
 }

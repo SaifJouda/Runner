@@ -14,6 +14,16 @@ public class AllyController : MonoBehaviour
         SpawnAllAllies();
     }
 
+    public void PickUp(int newX)
+    {
+        x=newX;
+        RespawnAllies();
+    }
+
+    public int getX()
+    {
+        return x;
+    }
 
     private void SpawnAllAllies()
     {

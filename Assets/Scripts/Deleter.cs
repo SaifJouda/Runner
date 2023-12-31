@@ -20,7 +20,7 @@ public class Deleter : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("OnTriggerEnter");
+        //Debug.Log("OnTriggerEnter");
         // Check if collided object is a platform
         if (other.CompareTag("Platform"))
         {

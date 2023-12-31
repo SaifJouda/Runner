@@ -243,6 +243,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c26b9ae4a3daac4db809218bc65065d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leftText: {fileID: 2628545466392095649}
+  rightText: {fileID: 4429982208637934323}
+  allyController: {fileID: 0}
 --- !u!1 &3785423333036125456
 GameObject:
   m_ObjectHideFlags: 0
