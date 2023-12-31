@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
     public float movementSpeed=5.0f;
     public float maxRange = 9f; // Maximum X position
 

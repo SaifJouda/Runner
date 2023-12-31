@@ -8,13 +8,14 @@ public class PlatformManager : MonoBehaviour
     public float platformLength = 30f; // Distance ahead to spawn platforms
     public int numOfPlatforms=0;
 
+    public AllyController allyController;
     private GameObject lastPlatform;
 
     public  NavMeshSurface navMeshSurface;
 
     void Start()
     {
-        navMeshSurface = GameObject.Find("NMS").GetComponent<NavMeshSurface>();
+        //navMeshSurface = GameObject.Find("NMS").GetComponent<NavMeshSurface>();
         StartPlatform();
     }
 

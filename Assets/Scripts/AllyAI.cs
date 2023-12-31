@@ -9,6 +9,7 @@ public class AllyAI : MonoBehaviour
 
     void Start()
     {
+        //player=GameObject.Find("Player").transform;
         navMeshAgent = GetComponent<NavMeshAgent>();
 
         // Call the function to set the destination at regular intervals
@@ -23,5 +24,10 @@ public class AllyAI : MonoBehaviour
             // Set the destination of the ally to the player's position
             navMeshAgent.SetDestination(player.position);
         }
+    }
+
+    public void Destruct()
+    {
+        Destroy(gameObject);
     }
 }
