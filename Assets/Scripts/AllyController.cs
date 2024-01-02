@@ -10,7 +10,7 @@ public class AllyController : MonoBehaviour
 
     public TextMeshProUGUI xText;
     
-    private int x=1;
+    private int x=10;
     // Start is called before the first frame update
     void Start()
     {

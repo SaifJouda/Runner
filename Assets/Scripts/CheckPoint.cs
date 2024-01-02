@@ -9,6 +9,10 @@ public class CheckPoint : MonoBehaviour
     public TextMeshPro rightText;
     public AllyController allyController;
 
+    public GameObject nextPlatform;
+    public EnemyManager enemyManager;
+    public PowerUpCollider powerUpCollider;
+
     private PowerUp leftPower;
     private PowerUp rightPower;
 
@@ -18,6 +22,16 @@ public class CheckPoint : MonoBehaviour
         Minus,
         Mult,
         Div
+    }
+
+    void Start()
+    {
+        nextPlatform.GetComponent<CheckPoint>().SetNextEnemyManager(enemyManager);
+    }
+
+    public void SetNextEnemyManager(EnemyManager nextEnemyManager)
+    {   
+        powerUpCollider.nextEnemyManager=nextEnemyManager;
     }
 
     public struct PowerUp

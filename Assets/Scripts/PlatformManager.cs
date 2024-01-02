@@ -16,6 +16,8 @@ public class PlatformManager : MonoBehaviour
     public  NavMeshSurface navMeshSurface;
 
     private GameObject lastEnemySpawned;
+    public GameObject nextPlatform;
+
 
     void Start()
     {
@@ -29,7 +31,7 @@ public class PlatformManager : MonoBehaviour
         {
             Vector3 spawnLocation= lastPlatform.transform.position + new Vector3(0,0,platformLength);
             SpawnPlatform(spawnLocation);
-            SpawnEnemies(spawnLocation);
+            //SpawnEnemies(spawnLocation);
         }
 
     }
@@ -54,11 +56,14 @@ public class PlatformManager : MonoBehaviour
 
     void SpawnPlatform(Vector3 spawnPosition)
     {
+    
+        nextPlatform=lastPlatform;
         //Vector3 spawnPosition = lastPlatform.transform.position + new Vector3(0,0,platformLength);
         lastPlatform = Instantiate(platformPrefab, spawnPosition, Quaternion.identity);
         navMeshSurface.BuildNavMesh(); // Rebuild the NavMesh
         lastPlatform.GetComponent<CheckPoint>().createPowerUps();
         lastPlatform.GetComponent<CheckPoint>().allyController=allyController;
+        lastPlatform.GetComponent<CheckPoint>().nextPlatform=nextPlatform;
     }
 
     void SpawnEnemies(Vector3 spawnPosition)
