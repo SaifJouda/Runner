@@ -26,7 +26,7 @@ public class CheckPoint : MonoBehaviour
 
     void Start()
     {
-        nextPlatform.GetComponent<CheckPoint>().SetNextEnemyManager(enemyManager);
+        if(nextPlatform!=null) nextPlatform.GetComponent<CheckPoint>().SetNextEnemyManager(enemyManager);
     }
 
     public void SetNextEnemyManager(EnemyManager nextEnemyManager)

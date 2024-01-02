@@ -5,7 +5,7 @@ public class PlatformManager : MonoBehaviour
 {
     public Transform player;
     public GameObject platformPrefab;
-    public float platformLength = 30f; // Distance ahead to spawn platforms
+    private float platformLength = 40f; // Distance ahead to spawn platforms
     public int numOfPlatforms=0;
 
     public GameObject enemyPrefab;
@@ -38,7 +38,7 @@ public class PlatformManager : MonoBehaviour
 
     void StartPlatform()
     {
-        for(int i =0; i<numOfPlatforms-1;i++)
+        for(int i =1; i<numOfPlatforms-1;i++)
         {
             //lastPlatform=Instantiate(platformPrefab, new Vector3(0,0,platformLength*i), Quaternion.identity);
             //lastPlatform.GetComponent<CheckPoint>().createPowerUps();
