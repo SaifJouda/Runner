@@ -3,9 +3,11 @@ using UnityEngine.AI;
 
 public class AllyAI : MonoBehaviour
 {
+    public AllyController allyController;
     public Transform player; // Reference to the player GameObject
     private NavMeshAgent navMeshAgent;
     public float updateInterval = 0.01f; // Time interval for updating destination
+    private int health=1;
 
     void Start()
     {
@@ -29,5 +31,16 @@ public class AllyAI : MonoBehaviour
     public void Destruct()
     {
         Destroy(gameObject);
+    }
+
+    public void Damage(int damage)
+    {
+        health-=damage;
+        if(health<1)
+        {
+            allyController.ChangeX(damage+health);
+            Destroy(gameObject);
+        }
+        allyController.ChangeX(damage);
     }
 }

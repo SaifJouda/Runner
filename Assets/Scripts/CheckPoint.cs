@@ -43,18 +43,22 @@ public class CheckPoint : MonoBehaviour
         {
             case 1:
                 returnPower.mathType = MathType.Plus;
+                returnPower.number = (int)Random.Range(1f, 8f*intensity);
                 break;
             case 2:
                 returnPower.mathType = MathType.Minus;
+                returnPower.number = (int)Random.Range(1f, 4f*intensity);
                 break;
             case 3:
                 returnPower.mathType = MathType.Mult;
+                returnPower.number = (int)Random.Range(2f, 3f*intensity);
                 break;
             case 4:
                 returnPower.mathType = MathType.Div;
+                returnPower.number = (int)Random.Range(2f, 3f*intensity);
                 break;
         }
-        returnPower.number = (int)Random.Range(5f, 8f*intensity)/randomNum;
+   
     
         return returnPower;
     }
