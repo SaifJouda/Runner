@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
 
         // Move the player towards the target position
         transform.position = targetPosition;//Vector3.MoveTowards(transform.position, targetPosition, movementSpeed * Time.deltaTime);
+       // transform.position+= new Vector3(0,0,0.05f);
     }
 
     void FixedUpdate()

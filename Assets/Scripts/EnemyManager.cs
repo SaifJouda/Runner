@@ -8,7 +8,8 @@ public class EnemyManager : MonoBehaviour
 
     void Start()
     {
-        for(int i=0;i< Random.Range(1, 10); i++) Instantiate(enemyPrefab, transform.position-new Vector3(10,0,0), Quaternion.identity, transform);
+        for(int i=0;i< Random.Range(1, 10); i++) 
+            Instantiate(enemyPrefab, transform.position-new Vector3(Random.Range(-10,10),0,0), Quaternion.identity, transform);
     }
     public void WakeAllEnemies()
     {

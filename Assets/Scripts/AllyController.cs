@@ -9,6 +9,8 @@ public class AllyController : MonoBehaviour
     public GameObject allyPrefab;
 
     public TextMeshProUGUI xText;
+
+    public int maxAllies=10;
     
     private int x=10;
     // Start is called before the first frame update
@@ -22,7 +24,6 @@ public class AllyController : MonoBehaviour
     {
         x=newX;
         if(x<1) x=1;
-        if(x>10) x=10;
         RespawnAllies();
         UpdateXText();
     }
@@ -41,17 +42,33 @@ public class AllyController : MonoBehaviour
 
     private void SpawnAllAllies()
     {
-        for(int i=0;i<x;i++)
+        if(x>10)
         {
-            SpawnAlly();
+            int baseRank = x/maxAllies;
+            int numExtra = x-baseRank*maxAllies;
+            for(int i=0;i<numExtra;i++)
+            {
+                SpawnAlly(baseRank+1);
+            }
+
+            for(int i=0;i<maxAllies-numExtra;i++)
+            {
+                SpawnAlly(baseRank);
+            }
+        }
+        else
+        {
+            for(int i=0;i<x;i++)
+            {
+                SpawnAlly(1);
+            }
         }
     }
 
-    private void SpawnAlly()
+    private void SpawnAlly(int rank)
     {
         GameObject spawnedAlly=Instantiate(allyPrefab, player.position, Quaternion.identity,transform);
-        spawnedAlly.GetComponent<AllyAI>().player=player;
-        spawnedAlly.GetComponent<AllyAI>().allyController=this;
+        spawnedAlly.GetComponent<AllyAI>().Initiate(player,this, rank);
     }
 
     private void DespawnAllAllies()

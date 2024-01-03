@@ -31,7 +31,7 @@ public class PlatformManager : MonoBehaviour
         {
             Vector3 spawnLocation= lastPlatform.transform.position + new Vector3(0,0,platformLength);
             SpawnPlatform(spawnLocation);
-            //SpawnEnemies(spawnLocation);
+            //SpawnEnemies(spawnLocation); //moved to EnemyManager located inside platform prefab
         }
 
     }
