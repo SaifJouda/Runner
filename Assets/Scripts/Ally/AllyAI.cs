@@ -70,8 +70,7 @@ public class AllyAI : MonoBehaviour
 
     private void UpdateVisuals(int i)
     {
-        Debug.Log(health);
-        float size=(float)Math.Round(1/4*Mathf.Sqrt(health)+0.5f,3);//(float)Math.Round(Math.Log(health+2),3);//(health)*0.1f-0.1f+1f;
+        float size=(float)Math.Round(0.7f-1f/((float)i+4),3);//(float)Math.Round(1f/4f*Math.Log(health+2),3);//(float)Math.Round(1/2*Mathf.Sqrt(health)+0.5f,3);//(float)Math.Round(Math.Log(health+2),3);//(health)*0.1f-0.1f+1f;
         transform.localScale = new Vector3(size,size,size);
         switch(i%3)
         {

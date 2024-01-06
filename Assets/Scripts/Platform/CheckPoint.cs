@@ -34,6 +34,14 @@ public class CheckPoint : MonoBehaviour
         powerUpCollider.nextEnemyManager=nextEnemyManager;
     }
 
+    public void SetCheckPoint(AllyController allyControllerN, GameObject nextPlatformN, PlatformManager platformManager, int checkPointsPassed)
+    {
+        allyController=allyControllerN;
+        nextPlatform=nextPlatformN;
+        powerUpCollider.platformManager=platformManager;
+        createPowerUps(checkPointsPassed);
+    }
+
     public struct PowerUp
     {
         public MathType mathType;
@@ -41,10 +49,12 @@ public class CheckPoint : MonoBehaviour
     }
 
 
-    public void createPowerUps()
+    public void createPowerUps(int level)
     {
-        leftPower = createPowerUp(Random.Range(1.0f, 5.0f));
-        rightPower = createPowerUp(Random.Range(1.0f, 5.0f));
+        float intensity=(float)Random.Range(1, 5)+(float)level/10f; // Round Later
+        Debug.Log(intensity+"");
+        leftPower = createPowerUp(intensity);
+        rightPower = createPowerUp(intensity);
         leftText.text=getPowerString(leftPower);
         rightText.text=getPowerString(rightPower);
     }
@@ -65,11 +75,11 @@ public class CheckPoint : MonoBehaviour
                 break;
             case 3:
                 returnPower.mathType = MathType.Mult;
-                returnPower.number = (int)Random.Range(2f, 3f*intensity);
+                returnPower.number = (int)Random.Range(2f, 2f*intensity);
                 break;
             case 4:
                 returnPower.mathType = MathType.Div;
-                returnPower.number = (int)Random.Range(2f, 3f*intensity);
+                returnPower.number = (int)Random.Range(2f, 2f*intensity); // intensity chooses powerup, higher = div and mult
                 break;
         }
    
