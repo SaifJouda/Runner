@@ -13,6 +13,7 @@ public class CheckPoint : MonoBehaviour
     public EnemyManager enemyManager;
     public PowerUpCollider powerUpCollider;
 
+
     private PowerUp leftPower;
     private PowerUp rightPower;
 
@@ -40,6 +41,7 @@ public class CheckPoint : MonoBehaviour
         nextPlatform=nextPlatformN;
         powerUpCollider.platformManager=platformManager;
         createPowerUps(checkPointsPassed);
+        enemyManager.SpawnEnemies(checkPointsPassed);
     }
 
     public struct PowerUp
