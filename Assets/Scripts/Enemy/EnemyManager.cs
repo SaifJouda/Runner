@@ -9,6 +9,8 @@ public class EnemyManager : MonoBehaviour
     public int xRange;
     public int zRange;
 
+    public LightController lc;
+
     public void SpawnEnemies(int checkPointsPassed)
     {
 
@@ -21,6 +23,7 @@ public class EnemyManager : MonoBehaviour
     public void WakeAllEnemies()
     {
         BroadcastMessage("WakeUp");
+        lc.TurnOnLights();
     }
 
     private void OnDrawGizmos()

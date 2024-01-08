@@ -146,6 +146,7 @@ MonoBehaviour:
     type: 3}
   xRange: 10
   zRange: 14
+  lc: {fileID: 118680930}
 --- !u!1 &1772547654819990836
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,6 +751,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 768573797801135731}
+  - component: {fileID: 118680930}
   m_Layer: 0
   m_Name: Lights
   m_TagString: Untagged
@@ -780,6 +782,27 @@ Transform:
   m_Father: {fileID: 680500975609424598}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &118680930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5695556740119319386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60800ee884229d74ca7a162a42d15b6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lights:
+  - {fileID: 3110285388525195035}
+  - {fileID: 8511292800881489409}
+  - {fileID: 3618651204544117537}
+  - {fileID: 4978409039486622382}
+  - {fileID: 2678836368711833626}
+  - {fileID: 6152269412261573969}
+  - {fileID: 2501466949798175970}
+  - {fileID: 122440088024634000}
 --- !u!1 &5701459806427135237
 GameObject:
   m_ObjectHideFlags: 0
@@ -957,6 +980,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CeilingLight (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 2726857905930806627, guid: b50c36ccc7bac854889f177acd25ce99,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2868840964335943740, guid: b50c36ccc7bac854889f177acd25ce99,
         type: 3}
       propertyPath: m_Intensity
@@ -1019,6 +1047,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b50c36ccc7bac854889f177acd25ce99, type: 3}
+--- !u!1 &2678836368711833626 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2726857905930806627, guid: b50c36ccc7bac854889f177acd25ce99,
+    type: 3}
+  m_PrefabInstance: {fileID: 70542100257570169}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6371237080191017620 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6382080011190067181, guid: b50c36ccc7bac854889f177acd25ce99,
@@ -1032,6 +1066,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 680500975609424598}
     m_Modifications:
+    - target: {fileID: 3796143667567702928, guid: c71d5ad4eb014c9499667acab3d3e207,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4558967250254852549, guid: c71d5ad4eb014c9499667acab3d3e207,
         type: 3}
       propertyPath: m_RootOrder
@@ -1117,6 +1156,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CeilingLight (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 2726857905930806627, guid: b50c36ccc7bac854889f177acd25ce99,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2868840964335943740, guid: b50c36ccc7bac854889f177acd25ce99,
         type: 3}
       propertyPath: m_Intensity
@@ -1179,6 +1223,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b50c36ccc7bac854889f177acd25ce99, type: 3}
+--- !u!1 &2501466949798175970 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2726857905930806627, guid: b50c36ccc7bac854889f177acd25ce99,
+    type: 3}
+  m_PrefabInstance: {fileID: 531776743160217985}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6913293527270809196 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6382080011190067181, guid: b50c36ccc7bac854889f177acd25ce99,
@@ -1197,10 +1247,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: CeilingLight
       objectReference: {fileID: 0}
+    - target: {fileID: 2726857905930806627, guid: b50c36ccc7bac854889f177acd25ce99,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2868840964335943740, guid: b50c36ccc7bac854889f177acd25ce99,
         type: 3}
       propertyPath: m_Intensity
-      value: 11.56
+      value: 11.81
       objectReference: {fileID: 0}
     - target: {fileID: 6382080011190067181, guid: b50c36ccc7bac854889f177acd25ce99,
         type: 3}
@@ -1259,6 +1314,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b50c36ccc7bac854889f177acd25ce99, type: 3}
+--- !u!1 &3110285388525195035 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2726857905930806627, guid: b50c36ccc7bac854889f177acd25ce99,
+    type: 3}
+  m_PrefabInstance: {fileID: 1080383173115341432}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6228470799830070677 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6382080011190067181, guid: b50c36ccc7bac854889f177acd25ce99,
@@ -1276,6 +1337,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CeilingLight (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2726857905930806627, guid: b50c36ccc7bac854889f177acd25ce99,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2868840964335943740, guid: b50c36ccc7bac854889f177acd25ce99,
         type: 3}
@@ -1339,6 +1405,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b50c36ccc7bac854889f177acd25ce99, type: 3}
+--- !u!1 &3618651204544117537 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2726857905930806627, guid: b50c36ccc7bac854889f177acd25ce99,
+    type: 3}
+  m_PrefabInstance: {fileID: 1724798154548485698}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5728021534069899695 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6382080011190067181, guid: b50c36ccc7bac854889f177acd25ce99,
@@ -1356,6 +1428,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CeilingLight (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2726857905930806627, guid: b50c36ccc7bac854889f177acd25ce99,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2868840964335943740, guid: b50c36ccc7bac854889f177acd25ce99,
         type: 3}
@@ -1419,6 +1496,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b50c36ccc7bac854889f177acd25ce99, type: 3}
+--- !u!1 &122440088024634000 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2726857905930806627, guid: b50c36ccc7bac854889f177acd25ce99,
+    type: 3}
+  m_PrefabInstance: {fileID: 2622573061278365683}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9004089531856300062 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6382080011190067181, guid: b50c36ccc7bac854889f177acd25ce99,
@@ -1432,6 +1515,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 680500975609424598}
     m_Modifications:
+    - target: {fileID: 3796143667567702928, guid: c71d5ad4eb014c9499667acab3d3e207,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3796143667567702930, guid: c71d5ad4eb014c9499667acab3d3e207,
         type: 3}
       propertyPath: m_Type
@@ -1527,6 +1615,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CeilingLight (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2726857905930806627, guid: b50c36ccc7bac854889f177acd25ce99,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2868840964335943740, guid: b50c36ccc7bac854889f177acd25ce99,
         type: 3}
       propertyPath: m_Intensity
@@ -1595,6 +1688,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6037516635292160866}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8511292800881489409 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2726857905930806627, guid: b50c36ccc7bac854889f177acd25ce99,
+    type: 3}
+  m_PrefabInstance: {fileID: 6037516635292160866}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6971961950293540813
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1606,6 +1705,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CeilingLight (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2726857905930806627, guid: b50c36ccc7bac854889f177acd25ce99,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2868840964335943740, guid: b50c36ccc7bac854889f177acd25ce99,
         type: 3}
@@ -1675,6 +1779,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6971961950293540813}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4978409039486622382 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2726857905930806627, guid: b50c36ccc7bac854889f177acd25ce99,
+    type: 3}
+  m_PrefabInstance: {fileID: 6971961950293540813}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8121959071409672242
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1686,6 +1796,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CeilingLight (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2726857905930806627, guid: b50c36ccc7bac854889f177acd25ce99,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2868840964335943740, guid: b50c36ccc7bac854889f177acd25ce99,
         type: 3}
@@ -1752,6 +1867,12 @@ PrefabInstance:
 --- !u!4 &2893366268125532127 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6382080011190067181, guid: b50c36ccc7bac854889f177acd25ce99,
+    type: 3}
+  m_PrefabInstance: {fileID: 8121959071409672242}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6152269412261573969 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2726857905930806627, guid: b50c36ccc7bac854889f177acd25ce99,
     type: 3}
   m_PrefabInstance: {fileID: 8121959071409672242}
   m_PrefabAsset: {fileID: 0}
