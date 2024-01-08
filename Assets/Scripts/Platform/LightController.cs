@@ -8,8 +8,13 @@ public class LightController : MonoBehaviour
 
     private int row=0;
 
+    public Animator leftBoxAnimator;
+    public Animator rightBoxAnimator;
+
     public void TurnOnLights()
     {
+        leftBoxAnimator.SetTrigger("stretch");
+        rightBoxAnimator.SetTrigger("stretch");
         InvokeRepeating("EnableLights", 0f, 0.2f);
         InvokeRepeating("DisableLights", 2f, 0.2f);
     }
