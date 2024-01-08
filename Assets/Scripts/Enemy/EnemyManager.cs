@@ -26,6 +26,6 @@ public class EnemyManager : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawCube(transform.position, new Vector3(xRange*2, 1f, zRange*2));
+        //Gizmos.DrawCube(transform.position, new Vector3(xRange*2, 1f, zRange*2));
     }
 }
