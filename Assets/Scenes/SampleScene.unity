@@ -345,7 +345,7 @@ MonoBehaviour:
   allyController: {fileID: 1523947237}
   navMeshSurface: {fileID: 590190390}
   nextPlatform: {fileID: 1999453965}
-  startingPlatform: {fileID: 0}
+  startingPlatform: {fileID: 997220560}
 --- !u!1001 &190519805
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1605,13 +1605,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1258385038}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0.35, y: 8.94, z: 1.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_Father: {fileID: 2015397588}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!4 &1313344508 stripped
 Transform:
@@ -2482,15 +2482,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1999453965}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -20.535019, z: 20}
+  m_LocalPosition: {x: 0, y: -20.535027, z: 20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 997220555}
   - {fileID: 46932194}
   - {fileID: 1799116273}
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 2015397588}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2015397587
 GameObject:
@@ -2501,6 +2501,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2015397588}
+  - component: {fileID: 2015397589}
   m_Layer: 0
   m_Name: StartingPlatform
   m_TagString: Untagged
@@ -2526,9 +2527,29 @@ Transform:
   - {fileID: 1374636703}
   - {fileID: 2039326954}
   - {fileID: 717932733}
+  - {fileID: 1258385041}
+  - {fileID: 1999453967}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2015397589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015397587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c26b9ae4a3daac4db809218bc65065d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftText: {fileID: 0}
+  rightText: {fileID: 0}
+  allyController: {fileID: 0}
+  nextPlatform: {fileID: 0}
+  enemyManager: {fileID: 0}
+  powerUpCollider: {fileID: 0}
 --- !u!4 &2039326954 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6382080011190067181, guid: b50c36ccc7bac854889f177acd25ce99,
