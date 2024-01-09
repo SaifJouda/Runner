@@ -4,8 +4,11 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     public string targetTag = "Ally"; 
+    public Animator animator;
     private NavMeshAgent agent;
     private GameObject nearestTarget;
+
+
 
     private void Start()
     {
@@ -18,6 +21,7 @@ public class EnemyAI : MonoBehaviour
         if (nearestTarget != null)
         {
             agent.SetDestination(nearestTarget.transform.position);
+            animator.SetBool("isWalking", true);
         }
         else
         {
@@ -47,7 +51,8 @@ public class EnemyAI : MonoBehaviour
         if (collision.gameObject.CompareTag(targetTag))
         {
             collision.gameObject.GetComponent<AllyAI>().Damage(1);
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            animator.SetTrigger("Attack1");
         }
     }
 }
