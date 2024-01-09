@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LightController : MonoBehaviour
 {
+    public GameObject[] text;
     public GameObject[] lights;
 
     private int row=0;
@@ -11,12 +12,15 @@ public class LightController : MonoBehaviour
     public Animator leftBoxAnimator;
     public Animator rightBoxAnimator;
 
+    public AudioSource smallSound;
+    public AudioSource bigSound;
+
     public void TurnOnLights()
     {
         leftBoxAnimator.SetTrigger("stretch");
         rightBoxAnimator.SetTrigger("stretch");
         InvokeRepeating("EnableLights", 0f, 0.2f);
-        InvokeRepeating("DisableLights", 2f, 0.2f);
+        InvokeRepeating("DisableLights", 2.2f, 0.2f);
     }
 
     private void EnableLights()
@@ -26,8 +30,15 @@ public class LightController : MonoBehaviour
         row+=2;
         if (row >= lights.Length)
         {
+            text[0].SetActive(true);
+            text[1].SetActive(true);
+            //bigSound.Play();
             CancelInvoke("EnableLights");
             row=0;
+        }
+        else
+        {
+            ///smallSound.Play();
         }
     }
 
