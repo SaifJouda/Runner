@@ -25,11 +25,6 @@ public class CheckPoint : MonoBehaviour
         Div
     }
 
-    void Start()
-    {
-        if(nextPlatform!=null) nextPlatform.GetComponent<CheckPoint>().SetNextEnemyManager(enemyManager);
-    }
-
     public void SetNextEnemyManager(EnemyManager nextEnemyManager)
     {   
         powerUpCollider.nextEnemyManager=nextEnemyManager;
@@ -42,6 +37,10 @@ public class CheckPoint : MonoBehaviour
         powerUpCollider.platformManager=platformManager;
         createPowerUps(checkPointsPassed);
         enemyManager.SpawnEnemies(checkPointsPassed);
+        if(nextPlatform!=null) 
+        {
+            nextPlatform.GetComponent<CheckPoint>().SetNextEnemyManager(enemyManager);
+        }
     }
 
     public struct PowerUp
@@ -54,7 +53,7 @@ public class CheckPoint : MonoBehaviour
     public void createPowerUps(int level)
     {
         float intensity=(float)Random.Range(1, 5)+(float)level/10f; // Round Later
-        Debug.Log(intensity+"");
+        //Debug.Log(intensity+"");
         leftPower = createPowerUp(intensity);
         rightPower = createPowerUp(intensity);
         leftText.text=getPowerString(leftPower);

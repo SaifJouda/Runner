@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour
     public float movementSpeed=5.0f;
     public float maxRange = 9f; // Maximum X position
 
-    private bool isDead=false; 
+    //private bool isDead=false; 
 
 
     void Update()

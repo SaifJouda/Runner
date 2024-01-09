@@ -17,6 +17,7 @@ public class LightController : MonoBehaviour
 
     public void TurnOnLights()
     {
+        Debug.Log("Turn on lights");
         leftBoxAnimator.SetTrigger("stretch");
         rightBoxAnimator.SetTrigger("stretch");
         InvokeRepeating("EnableLights", 0f, 0.2f);
