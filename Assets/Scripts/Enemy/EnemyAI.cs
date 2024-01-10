@@ -8,24 +8,34 @@ public class EnemyAI : MonoBehaviour
     private NavMeshAgent agent;
     private GameObject nearestTarget;
 
-
+    private int health=5;
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        FindNearestTarget();
+        InvokeRepeating("FindNearestTarget", 0f, 1f);
     }
 
     private void Update()
     {
-        if (nearestTarget != null)
+        if (nearestTarget != null && health>0)
         {
             agent.SetDestination(nearestTarget.transform.position);
             animator.SetBool("isWalking", true);
+
+            float distanceToTarget = Vector3.Distance(transform.position, nearestTarget.transform.position);
+            if (distanceToTarget < 3f)
+            {
+                Debug.Log("Attack");
+                nearestTarget.GetComponent<AllyAI>().Damage(1);
+                animator.SetTrigger("Attack1");
+                Damage(1);
+                //agent.ResetPath();
+            }
         }
         else
         {
-            FindNearestTarget();
+            animator.SetBool("isWalking", false);
         }
     }
 
@@ -46,13 +56,15 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+
+    public void Damage(int damage)
     {
-        if (collision.gameObject.CompareTag(targetTag))
+        health-=damage;
+        if(health<1)
         {
-            collision.gameObject.GetComponent<AllyAI>().Damage(1);
-            //Destroy(gameObject);
-            animator.SetTrigger("Attack1");
+            animator.SetBool("isDead",true);
+            animator.SetTrigger("Die");
+            agent.ResetPath();
         }
     }
 }
