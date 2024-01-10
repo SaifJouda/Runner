@@ -16,7 +16,11 @@ public class AllyAI : MonoBehaviour
     public Material mat2;
     public Material mat3;
 
-  
+    private GameObject target;
+    public GameObject projectilePrefab;
+    private float shootingForce = 200f; // Force applied to the projectile
+    private float shootingInterval = 0.1f; // Time interval between shots
+    private float shootingTimer = 0f;
 
     void Start()
     {
@@ -25,9 +29,63 @@ public class AllyAI : MonoBehaviour
 
         // Call the function to set the destination at regular intervals
         InvokeRepeating("SetDestinationToPlayer", 0.1f, updateInterval);
-
+        InvokeRepeating("FindTarget", 0.1f, updateInterval);
     }
 
+    void Update()
+    {
+        // Check if the target is set and shooting timer allows shooting
+        if (target && shootingTimer <= 0f)
+        {
+            if(target.GetComponent<EnemyAI>().health>0 && target.GetComponent<EnemyAI>().enabled)
+            {
+                ShootProjectile();
+                shootingTimer = shootingInterval; // Reset the shooting timer
+            }
+        }
+
+        // Update the shooting timer
+        if(shootingTimer>0) shootingTimer -= Time.deltaTime;
+    }
+
+    private void FindTarget()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 20f);
+
+        foreach (Collider collider in colliders)
+        {
+            if (collider.CompareTag("Enemy"))
+            {
+                if(collider.gameObject.GetComponent<EnemyAI>().health>0) target = collider.gameObject;
+                // Do something with the targetObject (e.g., set as AI target, perform actions, etc.)
+                //Debug.Log("Found target: " + target.name);
+            }
+        }
+    }
+
+    void ShootProjectile()
+    {
+        // Calculate direction towards the target
+        Vector3 direction = (target.transform.position - transform.position).normalized;
+
+        // Instantiate the projectile
+        GameObject newProjectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+
+        // Get the Rigidbody of the projectile
+        Rigidbody projectileRb = newProjectile.GetComponent<Rigidbody>();
+
+        // Check if the projectile Rigidbody exists
+        if (projectileRb)
+        {
+            // Apply force to shoot the projectile towards the target
+            projectileRb.AddForce(direction * shootingForce, ForceMode.Impulse);
+
+            // Rotate the projectile towards the target
+            Quaternion rotation = Quaternion.LookRotation(direction);
+            newProjectile.transform.rotation = rotation;
+        }
+
+    }
 
     public void Initiate(Transform playerN, AllyController allyControllerN, int rank)
     {

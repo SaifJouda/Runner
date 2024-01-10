@@ -8,7 +8,7 @@ public class EnemyAI : MonoBehaviour
     private NavMeshAgent agent;
     private GameObject nearestTarget;
 
-    private int health=5;
+    public int health=5;
 
     private void Start()
     {
@@ -59,6 +59,7 @@ public class EnemyAI : MonoBehaviour
 
     public void Damage(int damage)
     {
+        Debug.Log("Damaged");
         health-=damage;
         if(health<1)
         {

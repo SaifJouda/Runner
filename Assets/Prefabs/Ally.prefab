@@ -258,6 +258,10 @@ MonoBehaviour:
   mat1: {fileID: 2100000, guid: 30584f276db46a84ebcb30e2d9d9b918, type: 2}
   mat2: {fileID: 2100000, guid: e10457225480d1f4d9d028714c2be721, type: 2}
   mat3: {fileID: 2100000, guid: dfd2f05546003ae438100bda1e26f4d9, type: 2}
+  projectilePrefab: {fileID: 8478683597386178247, guid: 24ab6cc4310f06d49872be364f899f7f,
+    type: 3}
+  shootingForce: 20
+  shootingInterval: 2
 --- !u!96 &457643386686104847
 TrailRenderer:
   serializedVersion: 2

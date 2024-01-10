@@ -17,8 +17,8 @@ TagManager:
   - Platform
   - NonCollider
   - Ally
-  - 
-  - 
+  - Bullet
+  - Enemy
   - 
   - 
   - 
