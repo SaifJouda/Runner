@@ -29,7 +29,7 @@ public class AllyAI : MonoBehaviour
 
         // Call the function to set the destination at regular intervals
         InvokeRepeating("SetDestinationToPlayer", 0.1f, updateInterval);
-        InvokeRepeating("FindTarget", 0.1f, updateInterval);
+        InvokeRepeating("FindTarget", UnityEngine.Random.Range(0.1f,0.9f), updateInterval);//InvokeRepeating("FindTarget", 0.1f, updateInterval);
     }
 
     void Update()
@@ -66,7 +66,14 @@ public class AllyAI : MonoBehaviour
     void ShootProjectile()
     {
         // Calculate direction towards the target
-        Vector3 direction = (target.transform.position - transform.position).normalized;
+        //Vector3 direction = (target.transform.position - transform.position).normalized;
+        Vector3 direction = (target.transform.position - transform.position 
+            + new Vector3(
+            UnityEngine.Random.Range(-1.1f, 1.1f), 
+            UnityEngine.Random.Range(-0.1f, 0.1f), 
+            UnityEngine.Random.Range(-0.1f, 0.1f))
+            ).normalized; // inaccuracy
+
 
         // Instantiate the projectile
         GameObject newProjectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
