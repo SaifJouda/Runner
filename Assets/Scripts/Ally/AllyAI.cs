@@ -22,6 +22,8 @@ public class AllyAI : MonoBehaviour
     private float shootingInterval = 0.1f; // Time interval between shots
     private float shootingTimer = 0f;
 
+    public AllyAnimation allyAnimation;
+
     void Start()
     {
         //player=GameObject.Find("Player").transform;
@@ -41,6 +43,11 @@ public class AllyAI : MonoBehaviour
             {
                 ShootProjectile();
                 shootingTimer = shootingInterval; // Reset the shooting timer
+
+            }
+            else
+            {
+                allyAnimation.aimTarget=null;
             }
         }
 
@@ -56,11 +63,20 @@ public class AllyAI : MonoBehaviour
         {
             if (collider.CompareTag("Enemy"))
             {
-                if(collider.gameObject.GetComponent<EnemyAI>().health>0) target = collider.gameObject;
+                if(collider.gameObject.GetComponent<EnemyAI>().health>0) 
+                {
+                    target = collider.gameObject;
+                    AimAt();
+                }
                 // Do something with the targetObject (e.g., set as AI target, perform actions, etc.)
                 //Debug.Log("Found target: " + target.name);
             }
         }
+    }
+
+    void AimAt()
+    {
+        allyAnimation.aimTarget=target.transform;
     }
 
     void ShootProjectile()
@@ -104,7 +120,7 @@ public class AllyAI : MonoBehaviour
     void SetRank(int i)
     {
         health=i;
-        UpdateVisuals(i);
+        //UpdateVisuals(i);
     }
 
     void SetDestinationToPlayer()
@@ -130,7 +146,7 @@ public class AllyAI : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        UpdateVisuals(health);
+        //UpdateVisuals(health);
     }
 
     private void UpdateVisuals(int i)
