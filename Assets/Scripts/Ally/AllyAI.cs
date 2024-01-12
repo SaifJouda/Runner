@@ -19,15 +19,20 @@ public class AllyAI : MonoBehaviour
     private GameObject target;
     public GameObject projectilePrefab;
     private float shootingForce = 200f; // Force applied to the projectile
-    private float shootingInterval = 0.1f; // Time interval between shots
+    private float shootingInterval = 0.5f; // Time interval between shots
     private float shootingTimer = 0f;
 
     public AllyAnimation allyAnimation;
 
     public Transform shootPoint;
 
+
+    public AudioClip spawnSound; 
+    public AudioSource audioSource;
+
     void Start()
     {
+        shootingInterval = UnityEngine.Random.Range(0.3f,0.4f+shootingInterval);
         //player=GameObject.Find("Player").transform;
         navMeshAgent = GetComponent<NavMeshAgent>();
 
@@ -83,6 +88,7 @@ public class AllyAI : MonoBehaviour
 
     void ShootProjectile()
     {
+        audioSource.PlayOneShot(spawnSound);
         // Calculate direction towards the target
         //Vector3 direction = (target.transform.position - transform.position).normalized;
         Vector3 direction = (target.transform.position - transform.position 

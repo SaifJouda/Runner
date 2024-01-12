@@ -5,9 +5,14 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private int damageAmount = 1; // Amount of damage to deal
+    public AudioClip spawnSound; 
+    public AudioSource audioSource;
 
     void Start()
     {
+        //audioSource.clip = spawnSound;
+        //audioSource.Play();
+        //audioSource.PlayOneShot(spawnSound);
         Destroy(gameObject, 1f);
     }
 
