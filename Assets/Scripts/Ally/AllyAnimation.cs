@@ -55,7 +55,7 @@ public class AllyAnimation : MonoBehaviour
 {
     public Transform aimTarget; // Object to aim at
     public Animator animator;
-    private float rotationSpeed = 15f;
+    private float rotationSpeed = 8f;
 
     void Start()
     {
@@ -107,7 +107,8 @@ public class AllyAnimation : MonoBehaviour
                 animator.SetFloat("Y", blendY);
             }*/
             Vector3 parentForward = transform.parent.forward.normalized;
-            transform.rotation=transform.parent.rotation;
+            transform.rotation=Quaternion.Slerp(transform.rotation, transform.parent.rotation, rotationSpeed * Time.deltaTime);//transform.parent.rotation;
+
             animator.SetFloat("X", 0f);
             animator.SetFloat("Y", 1f);
         }

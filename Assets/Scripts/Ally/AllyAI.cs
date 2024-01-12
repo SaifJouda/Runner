@@ -24,6 +24,8 @@ public class AllyAI : MonoBehaviour
 
     public AllyAnimation allyAnimation;
 
+    public Transform shootPoint;
+
     void Start()
     {
         //player=GameObject.Find("Player").transform;
@@ -92,7 +94,7 @@ public class AllyAI : MonoBehaviour
 
 
         // Instantiate the projectile
-        GameObject newProjectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        GameObject newProjectile = Instantiate(projectilePrefab, shootPoint.position, Quaternion.identity);
 
         // Get the Rigidbody of the projectile
         Rigidbody projectileRb = newProjectile.GetComponent<Rigidbody>();
