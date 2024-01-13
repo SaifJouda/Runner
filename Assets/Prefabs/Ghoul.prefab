@@ -976,7 +976,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.8
   m_Height: 3.6
   m_Direction: 1
   m_Center: {x: 0, y: 0.75, z: 0}
@@ -1016,6 +1016,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTag: Ally
   animator: {fileID: 8281458636749886553}
+  health: 2
+  attackRadius: 2
+  attackCooldown: 3
 --- !u!114 &8526581214543879826
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,6 +10,13 @@ public class EnemyAI : MonoBehaviour
 
     public int health=5;
 
+    [SerializeField]
+    private float attackRadius;
+
+    [SerializeField]
+    private float attackCooldown;
+    private float attackTimer=0;
+
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -24,14 +31,16 @@ public class EnemyAI : MonoBehaviour
             animator.SetBool("isWalking", true);
 
             float distanceToTarget = Vector3.Distance(transform.position, nearestTarget.transform.position);
-            if (distanceToTarget < 3f)
+            if (distanceToTarget < attackRadius && attackTimer<=0)
             {
                 Debug.Log("Attack");
                 nearestTarget.GetComponent<AllyAI>().Damage(1);
                 animator.SetTrigger("Attack1");
                 Damage(1);
+                attackTimer=attackCooldown;
                 //agent.ResetPath();
             }
+            attackTimer-=Time.deltaTime;
         }
         else
         {
@@ -67,5 +76,14 @@ public class EnemyAI : MonoBehaviour
             animator.SetTrigger("Die");
             agent.ResetPath();
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        // Set the color of the gizmo
+        Gizmos.color = Color.yellow;
+
+        // DrawWireSphere draws an invisible sphere for gizmo visualization
+        Gizmos.DrawWireSphere(transform.position, attackRadius);
     }
 }

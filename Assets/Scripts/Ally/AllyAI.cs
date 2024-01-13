@@ -18,7 +18,7 @@ public class AllyAI : MonoBehaviour
 
     private GameObject target;
     public GameObject projectilePrefab;
-    private float shootingForce = 200f; // Force applied to the projectile
+    private float shootingForce = 100f; // Force applied to the projectile
     private float shootingInterval = 0.5f; // Time interval between shots
     private float shootingTimer = 0f;
 
@@ -93,7 +93,7 @@ public class AllyAI : MonoBehaviour
         //Vector3 direction = (target.transform.position - transform.position).normalized;
         Vector3 direction = (target.transform.position - transform.position 
             + new Vector3(
-            UnityEngine.Random.Range(-1.1f, 1.1f), 
+            UnityEngine.Random.Range(-0.6f, 0.6f), 
             UnityEngine.Random.Range(-0.1f, 0.1f), 
             UnityEngine.Random.Range(-0.1f, 0.1f))
             ).normalized; // inaccuracy
