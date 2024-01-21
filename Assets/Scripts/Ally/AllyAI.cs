@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.AI;
+using TMPro;
 
 public class AllyAI : MonoBehaviour
 {
@@ -30,12 +31,14 @@ public class AllyAI : MonoBehaviour
     public AudioClip spawnSound; 
     public AudioSource audioSource;
 
+    public TextMeshProUGUI healthText;
+
     void Start()
     {
         shootingInterval = UnityEngine.Random.Range(0.3f,0.4f+shootingInterval);
         //player=GameObject.Find("Player").transform;
         navMeshAgent = GetComponent<NavMeshAgent>();
-
+        UpdateVisuals(health);
         // Call the function to set the destination at regular intervals
         InvokeRepeating("SetDestinationToPlayer", 0.1f, updateInterval);
         InvokeRepeating("FindTarget", UnityEngine.Random.Range(0.1f,0.9f), updateInterval);//InvokeRepeating("FindTarget", 0.1f, updateInterval);
@@ -128,7 +131,7 @@ public class AllyAI : MonoBehaviour
     void SetRank(int i)
     {
         health=i;
-        //UpdateVisuals(i);
+        UpdateVisuals(i);
     }
 
     void SetDestinationToPlayer()
@@ -153,12 +156,14 @@ public class AllyAI : MonoBehaviour
         if(health<1)
         {
             Destroy(gameObject);
+            //Implement Death
         }
-        //UpdateVisuals(health);
+        UpdateVisuals(health);
     }
 
     private void UpdateVisuals(int i)
     {
+        /*
         float size=(float)Math.Round(0.7f-1f/((float)i+4),3);//(float)Math.Round(1f/4f*Math.Log(health+2),3);//(float)Math.Round(1/2*Mathf.Sqrt(health)+0.5f,3);//(float)Math.Round(Math.Log(health+2),3);//(health)*0.1f-0.1f+1f;
         transform.localScale = new Vector3(size,size,size);
         switch(i%3)
@@ -173,5 +178,7 @@ public class AllyAI : MonoBehaviour
                 rend.material = mat3;
                 break;
         }
+        */
+        healthText.text=i+"";
     }
 }
