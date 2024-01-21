@@ -18,4 +18,9 @@ public class WalkingSound : MonoBehaviour
     {
         audioSource.PlayOneShot(walkingSounds[Random.Range(0,9)]);
     }
+
+    public void Stop()
+    {
+        CancelInvoke("PlayWalkingSound");
+    }
 }

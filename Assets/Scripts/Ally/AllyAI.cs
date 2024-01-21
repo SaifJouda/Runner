@@ -10,6 +10,7 @@ public class AllyAI : MonoBehaviour
     private NavMeshAgent navMeshAgent;
     public float updateInterval = 10f; // Time interval for updating destination
     private int health=1;
+    public bool dead=false;
 
     public MeshRenderer rend;
 
@@ -38,7 +39,6 @@ public class AllyAI : MonoBehaviour
         shootingInterval = UnityEngine.Random.Range(0.3f,0.4f+shootingInterval);
         //player=GameObject.Find("Player").transform;
         navMeshAgent = GetComponent<NavMeshAgent>();
-        UpdateVisuals(health);
         // Call the function to set the destination at regular intervals
         InvokeRepeating("SetDestinationToPlayer", 0.1f, updateInterval);
         InvokeRepeating("FindTarget", UnityEngine.Random.Range(0.1f,0.9f), updateInterval);//InvokeRepeating("FindTarget", 0.1f, updateInterval);
@@ -47,7 +47,7 @@ public class AllyAI : MonoBehaviour
     void Update()
     {
         // Check if the target is set and shooting timer allows shooting
-        if (target && shootingTimer <= 0f)
+        if (target && shootingTimer <= 0f && !dead)
         {
             if(target.GetComponent<EnemyAI>().health>0 && target.GetComponent<EnemyAI>().enabled)
             {
@@ -153,12 +153,13 @@ public class AllyAI : MonoBehaviour
     {
         health-=damage;
         allyController.ChangeX(damage);
+        UpdateVisuals(health);
         if(health<1)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
             //Implement Death
+            Die();
         }
-        UpdateVisuals(health);
     }
 
     private void UpdateVisuals(int i)
@@ -181,4 +182,17 @@ public class AllyAI : MonoBehaviour
         */
         healthText.text=i+"";
     }
+
+    private void Die()
+    {
+        healthText.text="KIA";
+        allyAnimation.Die();
+        dead=true;
+        CancelInvoke("SetDestinationToPlayer");
+        CancelInvoke("FindTarget");
+        navMeshAgent.ResetPath();
+        GetComponent<WalkingSound>().Stop();
+    }
+
+
 }

@@ -31,7 +31,7 @@ public class EnemyAI : MonoBehaviour
             animator.SetBool("isWalking", true);
 
             float distanceToTarget = Vector3.Distance(transform.position, nearestTarget.transform.position);
-            if (distanceToTarget < attackRadius && attackTimer<=0)
+            if (distanceToTarget < attackRadius && attackTimer<=0 && nearestTarget.GetComponent<AllyAI>().dead==false)
             {
                 Debug.Log("Attack");
                 nearestTarget.GetComponent<AllyAI>().Damage(1);
@@ -57,7 +57,7 @@ public class EnemyAI : MonoBehaviour
         foreach (GameObject target in targetObjects)
         {
             float distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
-            if (distanceToTarget < shortestDistance)
+            if (distanceToTarget < shortestDistance && target.GetComponent<AllyAI>().dead==false)
             {
                 shortestDistance = distanceToTarget;
                 nearestTarget = target;
