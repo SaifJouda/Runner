@@ -8,6 +8,8 @@ public class AllyController : MonoBehaviour
     public Transform player;
     public GameObject allyPrefab;
 
+    public MainController mainController;
+
     public TextMeshProUGUI xText;
 
     private int maxAllies=8;
@@ -86,6 +88,7 @@ public class AllyController : MonoBehaviour
     {
         Debug.Log("die");
         player.gameObject.GetComponent<PlayerController>().enabled = false;
+        mainController.Die();
     }
 
     private void UpdateXText()
