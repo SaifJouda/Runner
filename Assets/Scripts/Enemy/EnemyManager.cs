@@ -11,12 +11,15 @@ public class EnemyManager : MonoBehaviour
 
     public LightController lc;
 
+    public MainController mainController;
+
     public void SpawnEnemies(int checkPointsPassed)
     {
 
         for(int i=0;i< Random.Range(1+checkPointsPassed/2,3+5*checkPointsPassed/2); i++) 
            {
-                Instantiate(enemyPrefab, transform.position-new Vector3(Random.Range(-1*xRange,xRange),0,Random.Range(-1*zRange,zRange)), Quaternion.identity, transform);
+                GameObject enemy = Instantiate(enemyPrefab, transform.position-new Vector3(Random.Range(-1*xRange,xRange),0,Random.Range(-1*zRange,zRange)), Quaternion.identity, transform);
+                enemy.GetComponent<EnemyAI>().mainController=mainController;
            }
     }
     public void WakeAllEnemies()

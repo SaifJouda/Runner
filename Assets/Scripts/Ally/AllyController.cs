@@ -12,11 +12,12 @@ public class AllyController : MonoBehaviour
 
     public TextMeshProUGUI xText;
 
+
     private int maxAllies=8;
     
-    private int x=10;
-    // Start is called before the first frame update
-    void Start()
+    private int x=8;
+
+    public void Play()
     {
         SpawnAllAllies();
         UpdateXText();

@@ -18,7 +18,7 @@ public class PlatformManager : MonoBehaviour
     private GameObject lastEnemySpawned;
     public GameObject nextPlatform;
 
-    private int checkPointsPassed=0;
+    public int checkPointsPassed=0;
 
     public StartingPlatform startingPlatform;
 
@@ -26,9 +26,10 @@ public class PlatformManager : MonoBehaviour
     {
         //navMeshSurface = GameObject.Find("NMS").GetComponent<NavMeshSurface>();
         StartPlatform();
+        InvokeRepeating("CheckPlayerLocation", 0f,0.4f);
     }
 
-    void Update()
+    void CheckPlayerLocation()
     {
         if (player.position.z > lastPlatform.transform.position.z - platformLength*2)
         {
@@ -41,37 +42,21 @@ public class PlatformManager : MonoBehaviour
 
     void StartPlatform()
     {
-        lastPlatform = Instantiate(platformPrefab, new Vector3(0,0,platformLength), Quaternion.identity);
+        lastPlatform = Instantiate(platformPrefab, new Vector3(0,0,platformLength), Quaternion.identity, transform);
         navMeshSurface.BuildNavMesh();
         lastPlatform.GetComponent<CheckPoint>().SetCheckPoint(allyController, null, this, checkPointsPassed);
         startingPlatform.nextEnemyManager=lastPlatform.GetComponent<CheckPoint>().enemyManager;
-        for(int i =2; i<numOfPlatforms;i++)
-        {
-            //lastPlatform=Instantiate(platformPrefab, new Vector3(0,0,platformLength*i), Quaternion.identity);
-            //lastPlatform.GetComponent<CheckPoint>().createPowerUps();
-            //lastPlatform.GetComponent<CheckPoint>().allyController=allyController;
-            //SpawnPlatform(new Vector3(0,0,platformLength*i));
-        }
-        //SpawnPlatform(new Vector3(0,0,platformLength*(numOfPlatforms-1)));
-        //lastPlatform=Instantiate(platformPrefab, new Vector3(0,0,platformLength*(numOfPlatforms-1)), Quaternion.identity);
-        //lastPlatform.GetComponent<CheckPoint>().createPowerUps();
-        //lastPlatform.GetComponent<CheckPoint>().allyController=allyController;
-
-        //navMeshSurface.BuildNavMesh(); // Rebuild the NavMesh
-
     }
 
     void SpawnPlatform(Vector3 spawnPosition)
     {
     
         nextPlatform=lastPlatform;
-        //Vector3 spawnPosition = lastPlatform.transform.position + new Vector3(0,0,platformLength);
-        lastPlatform = Instantiate(platformPrefab, spawnPosition, Quaternion.identity);
+        lastPlatform = Instantiate(platformPrefab, spawnPosition, Quaternion.identity, transform);
         navMeshSurface.BuildNavMesh(); // Rebuild the NavMesh
-        //lastPlatform.GetComponent<CheckPoint>().createPowerUps();
-        //lastPlatform.GetComponent<CheckPoint>().allyController=allyController;
-        //lastPlatform.GetComponent<CheckPoint>().nextPlatform=nextPlatform;
         lastPlatform.GetComponent<CheckPoint>().SetCheckPoint(allyController, nextPlatform, this, checkPointsPassed);
+    
+
     }
 
     void SpawnEnemies(Vector3 spawnPosition)
@@ -82,6 +67,21 @@ public class PlatformManager : MonoBehaviour
     public void PlusCheckpoint()
     {
         checkPointsPassed++;
+    }
+
+    public void Restart()
+    {
+        DeleteAllPlatforms();
+        StartPlatform();
+    }
+
+    private void DeleteAllPlatforms()
+    {
+        foreach (Transform child in transform)
+        {
+            // Destroy each child
+            Destroy(child.gameObject);
+        }
     }
 
 }

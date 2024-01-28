@@ -8,6 +8,8 @@ public class EnemyAI : MonoBehaviour
     private NavMeshAgent agent;
     private GameObject nearestTarget;
 
+    public AllyController allyController;
+
     public int health=5;
 
     [SerializeField]
@@ -16,6 +18,8 @@ public class EnemyAI : MonoBehaviour
     [SerializeField]
     private float attackCooldown;
     private float attackTimer=0;
+
+    public MainController mainController;
 
     private void Start()
     {
@@ -72,10 +76,16 @@ public class EnemyAI : MonoBehaviour
         health-=damage;
         if(health<1)
         {
-            animator.SetBool("isDead",true);
-            animator.SetTrigger("Die");
-            agent.ResetPath();
+            Die();
         }
+    }
+
+    private void Die()
+    {
+        animator.SetBool("isDead",true);
+        animator.SetTrigger("Die");
+        agent.ResetPath();
+        mainController.ghoulsKilled+=1;
     }
 
     private void OnDrawGizmos()
