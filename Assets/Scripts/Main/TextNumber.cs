@@ -17,7 +17,7 @@ public class TextNumber : MonoBehaviour
 
     public void NumberUp()
     {
-        InvokeRepeating("Counter", 0f,0.01f);
+        InvokeRepeating("Counter", 0f,0.05f);
     }
 
 

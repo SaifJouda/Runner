@@ -13,11 +13,18 @@ public class MainController : MonoBehaviour
     public AllyController allyController;
     public PlatformManager platformManager;
 
-    public TextMeshProUGUI roomsText;
+    public TextNumber roomsText;
     public int ghoulsKilled=0;
-    public TextMeshProUGUI ghoulsText;
+    public TextNumber ghoulsText;
 
     public Animator deathAnimator;
+
+    public Animator blackscreenAnimator;
+
+    void Start()
+    {
+
+    }
 
     public void Die()
     {
@@ -25,18 +32,19 @@ public class MainController : MonoBehaviour
         deathAnimator.SetTrigger("DeathUI");
         xText.SetActive(false);
 
-        roomsText.text=platformManager.checkPointsPassed+"";
-        ghoulsText.text=ghoulsKilled+"";
+        roomsText.finalNumber=platformManager.checkPointsPassed;
+        ghoulsText.finalNumber=ghoulsKilled;
     }   
 
     public void Restart()
     {
+        blackscreenAnimator.SetTrigger("fadeOut");
         /*deathScreen.SetActive(false);
         xText.SetActive(true);
         player.position=Vector3.zero;
         playerController.enabled = true;
         platformManager.Restart();*/
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentSceneIndex);
+        //int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        //SceneManager.LoadScene(currentSceneIndex);
     }
 }

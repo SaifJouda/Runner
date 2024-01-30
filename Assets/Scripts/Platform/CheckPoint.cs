@@ -30,12 +30,13 @@ public class CheckPoint : MonoBehaviour
         powerUpCollider.nextEnemyManager=nextEnemyManager;
     }
 
-    public void SetCheckPoint(AllyController allyControllerN, GameObject nextPlatformN, PlatformManager platformManager, int checkPointsPassed)
+    public void SetCheckPoint(AllyController allyControllerN, GameObject nextPlatformN, PlatformManager platformManager, int checkPointsPassed, MainController main)
     {
         allyController=allyControllerN;
         nextPlatform=nextPlatformN;
         powerUpCollider.platformManager=platformManager;
         createPowerUps(checkPointsPassed);
+        enemyManager.mainController=main;
         enemyManager.SpawnEnemies(checkPointsPassed);
         if(nextPlatform!=null) 
         {

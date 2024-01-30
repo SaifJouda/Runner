@@ -22,6 +22,9 @@ public class PlatformManager : MonoBehaviour
 
     public StartingPlatform startingPlatform;
 
+    public MainController mainController;
+
+
     void Start()
     {
         //navMeshSurface = GameObject.Find("NMS").GetComponent<NavMeshSurface>();
@@ -44,7 +47,7 @@ public class PlatformManager : MonoBehaviour
     {
         lastPlatform = Instantiate(platformPrefab, new Vector3(0,0,platformLength), Quaternion.identity, transform);
         navMeshSurface.BuildNavMesh();
-        lastPlatform.GetComponent<CheckPoint>().SetCheckPoint(allyController, null, this, checkPointsPassed);
+        lastPlatform.GetComponent<CheckPoint>().SetCheckPoint(allyController, null, this, checkPointsPassed, mainController);
         startingPlatform.nextEnemyManager=lastPlatform.GetComponent<CheckPoint>().enemyManager;
     }
 
@@ -54,7 +57,7 @@ public class PlatformManager : MonoBehaviour
         nextPlatform=lastPlatform;
         lastPlatform = Instantiate(platformPrefab, spawnPosition, Quaternion.identity, transform);
         navMeshSurface.BuildNavMesh(); // Rebuild the NavMesh
-        lastPlatform.GetComponent<CheckPoint>().SetCheckPoint(allyController, nextPlatform, this, checkPointsPassed);
+        lastPlatform.GetComponent<CheckPoint>().SetCheckPoint(allyController, nextPlatform, this, checkPointsPassed, mainController);
     
 
     }

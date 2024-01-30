@@ -15,7 +15,7 @@ public class AllyController : MonoBehaviour
 
     private int maxAllies=8;
     
-    private int x=8;
+    private int x=4;
 
     public void Play()
     {
